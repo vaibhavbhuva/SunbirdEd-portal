@@ -8,8 +8,8 @@
       <label class="mb-16 fs-1-286">Question</label>
       <label *ngIf="showFormError && [undefined, ''].includes(mcqForm.question)"
         class="ui basic red error label pt-1">Fill Question</label>
-      <app-ckeditor-tool (editorDataOutput)="mcqForm.question = $event.body; getMedia($event.mediaobj);"
-        [editorConfig]="questionMetaData" [editorDataInput]="mcqForm.question"></app-ckeditor-tool>
+      <!-- <app-ckeditor-tool (editorDataOutput)="mcqForm.question = $event.body; getMedia($event.mediaobj);"
+        [editorConfig]="questionMetaData" [editorDataInput]="mcqForm.question"></app-ckeditor-tool> -->
     </div>
     <div class="mcq-options">
       <label *ngIf="showFormError && !mcqForm.answer" class="ui basic red error label pt-1">Select one correct
@@ -19,10 +19,10 @@
           <label class="mb-8 fs-1">Option {{i + 1}}:</label>
           <label *ngIf="showFormError && (option.body === undefined || option.body === '')"
             class="ui basic red error label pt-1">Fill this option</label>
-          <app-ckeditor-tool (hasError)="handleEditorError($event)"
+          <!-- <app-ckeditor-tool (hasError)="handleEditorError($event)"
             (editorDataOutput)="option.body = $event.body; option.length = $event.length; getMedia($event.mediaobj)"
             [editorConfig]="questionMetaData" [editorDataInput]="option.body" [setCharacterLimit]="setCharacterLimit"
-            [setImageLimit]="setImageLimit"></app-ckeditor-tool>
+            [setImageLimit]="setImageLimit"></app-ckeditor-tool> -->
           <div class="mcq-checkbox-answer">
             <!-- <sui-radio-button name="'correct_response'" value={{i}} [(ngModel)]="mcqForm.answer"></sui-radio-button>
               <label>Mark as right answer</label> -->

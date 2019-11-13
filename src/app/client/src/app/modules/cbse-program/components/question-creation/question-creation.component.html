@@ -12,15 +12,15 @@
     <label>Question</label>
     <label *ngIf="showFormError && [undefined, ''].includes(question)"
         class="ui basic red error label pt-1">Fill Question</label>
-    <app-ckeditor-tool [editorConfig]="editorConfig" (editorDataOutput)="editorDataHandler($event, 'question')"
-      [editorDataInput]="question" [editorId]="'question_editor'"></app-ckeditor-tool>
+    <!-- <app-ckeditor-tool [editorConfig]="editorConfig" (editorDataOutput)="editorDataHandler($event, 'question')"
+      [editorDataInput]="question" [editorId]="'question_editor'"></app-ckeditor-tool> -->
   </div>
   <div class="field">
     <label>Answer</label>
     <label *ngIf="showFormError && [undefined, ''].includes(editorState.solutions)"
         class="ui basic red error label pt-1">Fill Answer</label>
-    <app-ckeditor-tool [editorConfig]="editorConfig" (editorDataOutput)="editorDataHandler($event, 'solution')"
-      [editorDataInput]="editorState.solutions" [editorId]="'answer_editor'"></app-ckeditor-tool>
+    <!-- <app-ckeditor-tool [editorConfig]="editorConfig" (editorDataOutput)="editorDataHandler($event, 'solution')"
+      [editorDataInput]="editorState.solutions" [editorId]="'answer_editor'"></app-ckeditor-tool> -->
   </div>
   <div class="ui two column grid width-100">
       <div class="one column row" *ngIf="learningOutcomeOptions.length > 0">

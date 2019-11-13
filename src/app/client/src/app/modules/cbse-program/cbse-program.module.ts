@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SanitizeHtmlPipe } from './pipe/sanitize-html.pipe';
 import { QuestionListComponent, SelectTextbookComponent, CbseComponent,
   QuestionCreationComponent, ChapterListComponent, McqCreationComponent, McqTemplateSelectionComponent,
-  CkeditorToolComponent, QuestionPreviewComponent } from './components';
+   QuestionPreviewComponent } from './components';
 import { SuiTabsModule, SuiModule } from 'ng2-semantic-ui';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SharedModule } from '@sunbird/shared';
@@ -19,7 +19,7 @@ import { CertificateDashboardComponent } from './components/certificate-dashboar
 @NgModule({
   declarations: [CsvUploadComponent, QuestionListComponent, SelectTextbookComponent, CbseComponent, QuestionCreationComponent,
     ChapterListComponent,
-    McqCreationComponent, CkeditorToolComponent ,
+    McqCreationComponent ,
     McqTemplateSelectionComponent,
     QuestionPreviewComponent, SanitizeHtmlPipe, QuestionCreationHeaderComponent, TextbookListComponent, DashboardComponent,
     CertificateDashboardComponent],
