@@ -6,7 +6,7 @@
 (questionStatus)="handleReviewrStatus($event)" [questionMetaData]="questionMetaData"
  (questionQueueStatus)="handleQuestionSelectionStatus($event)" [questionSelectionStatus]="questionSelectionStatus" [role]="role"></app-question-creation-header>
 
-
+ 
 <form *ngIf="!showPreview" class="ui form mt-8" [formGroup]="questionMetaForm">
   <div class="field">
     <label>Question</label>
@@ -14,6 +14,11 @@
         class="ui basic red error label pt-1">Fill Question</label>
     <!-- <app-ckeditor-tool [editorConfig]="editorConfig" (editorDataOutput)="editorDataHandler($event, 'question')"
       [editorDataInput]="question" [editorId]="'question_editor'"></app-ckeditor-tool> -->
+      <ckeditor
+      formControlName="question"
+ [(ngModel)]="question"
+ [config]="ckconfig"
+ (change)="editorDataHandler($event, 'question')"></ckeditor>
   </div>
   <div class="field">
     <label>Answer</label>
@@ -21,6 +26,11 @@
         class="ui basic red error label pt-1">Fill Answer</label>
     <!-- <app-ckeditor-tool [editorConfig]="editorConfig" (editorDataOutput)="editorDataHandler($event, 'solution')"
       [editorDataInput]="editorState.solutions" [editorId]="'answer_editor'"></app-ckeditor-tool> -->
+      <ckeditor
+      formControlName="solutions"
+ [(ngModel)]="editorState.solutions"
+ [config]="ckconfig"
+ (change)="editorDataHandler($event, 'solution')"></ckeditor>
   </div>
   <div class="ui two column grid width-100">
       <div class="one column row" *ngIf="learningOutcomeOptions.length > 0">

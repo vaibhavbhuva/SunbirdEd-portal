@@ -11,12 +11,14 @@ import { forkJoin, Observable, of, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { UUID } from 'angular2-uuid';
 import * as _ from 'lodash-es';
-import { CbseProgramService } from '../../services';
+import { CbseProgramService,Ckeditor4ConfigService } from '../../services';
+
 
 @Component({
   selector: 'app-question-creation',
   templateUrl: './question-creation.component.html',
-  styleUrls: ['./question-creation.component.css']
+  styleUrls: ['./question-creation.component.css'],
+  providers:[Ckeditor4ConfigService]
 })
 export class QuestionCreationComponent implements OnInit, AfterViewInit, OnChanges, AfterViewChecked {
   public userProfile: IUserProfile;
@@ -37,6 +39,8 @@ export class QuestionCreationComponent implements OnInit, AfterViewInit, OnChang
   public mediaArr = [];
   showFormError = false;
   public userName: any;
+  public instance: any;
+  public ckconfig: any;
   @Input() tabIndex: any;
   @Input() questionMetaData: any;
   @Input() questionSelectionStatus: any;
@@ -56,13 +60,16 @@ export class QuestionCreationComponent implements OnInit, AfterViewInit, OnChang
     publicDataService: PublicDataService,
     toasterService: ToasterService,
     resourceService: ResourceService, public telemetryService: TelemetryService,
-    public actionService: ActionService, private cdr: ChangeDetectorRef
+    public actionService: ActionService, private cdr: ChangeDetectorRef,
+    private ck4Service : Ckeditor4ConfigService
   ) {
     this.userService = userService;
     this.configService = configService;
     this.publicDataService = publicDataService;
     this.toasterService = toasterService;
     this.resourceService = resourceService;
+    this.ckconfig = this.ck4Service.getConfig();
+
   }
   solution: any;
   question: any;
@@ -181,10 +188,14 @@ export class QuestionCreationComponent implements OnInit, AfterViewInit, OnChang
       this.questionMetaForm = new FormGroup({
         learningOutcome: new FormControl(''),
         bloomsLevel: new FormControl(''),
+        question : new FormControl(''),
+        solutions : new FormControl('')
       });
     } else {
       this.questionMetaForm = new FormGroup({
-        bloomsLevel: new FormControl('')
+        bloomsLevel: new FormControl(''),
+        question : new FormControl(''),
+        solutions : new FormControl('')
       });
     }
   }
@@ -394,21 +405,22 @@ export class QuestionCreationComponent implements OnInit, AfterViewInit, OnChang
       });
   }
 
-  editorDataHandler(event, type) {
-    if (type === 'question') {
-      this.question = event.body;
-    } else {
-      this.editorState.solutions = event.body;
-    }
-    if (event.mediaobj) {
-      const media = event.mediaobj;
-      const value = _.find(this.mediaArr, ob => {
-        return ob.id === media.id;
-      });
-      if (value === undefined) {
-        this.mediaArr.push(event.mediaobj);
-      }
-    }
+  editorDataHandler(event, type?) {
+    console.log(event);
+    // if (type === 'question') {
+    //   this.question = event.body;
+    // } else {
+    //   this.editorState.solutions = event.body;
+    // }
+    // if (event.mediaobj) {
+    //   const media = event.mediaobj;
+    //   const value = _.find(this.mediaArr, ob => {
+    //     return ob.id === media.id;
+    //   });
+    //   if (value === undefined) {
+    //     this.mediaArr.push(event.mediaobj);
+    //   }
+    // }
   }
 
   getConvertedLatex(body) {

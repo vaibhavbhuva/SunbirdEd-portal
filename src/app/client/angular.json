@@ -19,7 +19,12 @@
             "assets": [
               "src/assets",
               "src/thirdparty",
-              "src/favicon.png"
+              "src/favicon.png",
+              {
+                "glob": "**/*",
+                "input": "node_modules/ckeditor4/",
+                "output": "assets/libs/ckeditor4/"
+              }
             ],
             "styles": [
               "node_modules/datatables.net-dt/css/jquery.dataTables.min.css",
@@ -38,7 +43,8 @@
               "node_modules/slick-carousel/slick/slick.min.js",
               "node_modules/@project-sunbird/telemetry-sdk/index.js",
               "src/assets/libs/semantic.min.js",
-              "node_modules/jquery.fancytree/dist/jquery.fancytree-all-deps.min.js"
+              "node_modules/jquery.fancytree/dist/jquery.fancytree-all-deps.min.js",
+              "node_modules/ckeditor4/ckeditor.js"
             ]
           },
           "configurations": {
