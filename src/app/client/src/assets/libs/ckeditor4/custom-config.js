@@ -59,9 +59,13 @@ CKEDITOR.editorConfig = function(config) {
   // For complete reference see:
   // https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html
 
+  config.extraPlugins =
+    "ckeditor_wiris,font,easyimage,divarea,autogrow"; //easyimage
+
   // For now, MathType is incompatible with CKEditor file upload plugins.
   config.removePlugins =
-    "uploadimage,uploadwidget,uploadfile,filetools,filebrowser,image";
+    "uploadimage,uploadwidget,uploadfile,filetools,filebrowser,image,resize,elementspath,ImageCaption";
+
   // https://ckeditor.com/docs/ckeditor4/latest/features/toolbar.html#custom-toolbar-demo
   config.toolbar = [
     {
@@ -84,21 +88,18 @@ CKEDITOR.editorConfig = function(config) {
       name: "basicstyles",
       items: ["Subscript", "Superscript"]
     },
-    // {
-    //   name: "insert",
-    //   items: ["EasyImageUpload"]
-    // },
+    {
+      name: "insert",
+      items: ["EasyImageUpload"]
+    },
     {
       name: "document",
       items: ["Source"]
     }
   ];
   config.resize_enabled = false;
-  config.extraPlugins =
-    "ckeditor_wiris,font,easyimage,divarea,autogrow,elementspath,resize"; //easyimage
   config.fontSize_sizes =
     "9/9px;11/11px;13/13px;15/15px;17/17px;19/19px;21/21px;23/23px;25/25px;";
-    config.autoGrow_minHeight = 200;
   config.fullPage = true;
   config.allowedContent = true;
   // Remove some buttons provided by the standard plugins, which are

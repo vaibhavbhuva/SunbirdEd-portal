@@ -406,21 +406,20 @@ export class QuestionCreationComponent implements OnInit, AfterViewInit, OnChang
   }
 
   editorDataHandler(event, type?) {
-    console.log(event);
     // if (type === 'question') {
     //   this.question = event.body;
     // } else {
     //   this.editorState.solutions = event.body;
     // }
-    // if (event.mediaobj) {
-    //   const media = event.mediaobj;
-    //   const value = _.find(this.mediaArr, ob => {
-    //     return ob.id === media.id;
-    //   });
-    //   if (value === undefined) {
-    //     this.mediaArr.push(event.mediaobj);
-    //   }
-    // }
+    if (event.mediaobj) {
+      const media = event.mediaobj;
+      const value = _.find(this.mediaArr, ob => {
+        return ob.id === media.id;
+      });
+      if (value === undefined) {
+        this.mediaArr.push(event.mediaobj);
+      }
+    }
   }
 
   getConvertedLatex(body) {
