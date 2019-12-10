@@ -7,18 +7,20 @@ import * as _ from 'lodash-es';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { CbseProgramService } from '../../services';
+import {MathText} from '@ckeditor/ckeditor5-mathtext/src/mathtext'
 
 @Component({
   selector: 'app-ckeditor-tool',
   templateUrl: './ckeditor-tool.component.html',
   styleUrls: ['./ckeditor-tool.component.css']
 })
+
 export class CkeditorToolComponent implements OnInit, AfterViewInit, OnChanges {
   @ViewChild('editor') public editorRef: ElementRef;
   @Input() editorConfig: any;
   @Input() editorDataInput: any;
   @Input() editorId: any;
-  @Input() setCharacterLimit: any;
+  @Input() setCharacterLimit: any; 
   @Input() setImageLimit: any;
   @Output() editorDataOutput = new EventEmitter<any>();
   @Output() hasError = new EventEmitter<any>();
@@ -70,8 +72,7 @@ export class CkeditorToolComponent implements OnInit, AfterViewInit, OnChanges {
 
     this.editorConfig = _.assign({
       toolbar: ['bold', '|', 'italic', '|', 'underline',
-        '|', 'numberedList', '|', 'fontSize', '|', 'ChemType', '|',
-        'mathtype', '|', 'subscript', '|', 'superscript', '|',
+        '|', 'numberedList', '|', 'fontSize', '|','MathText', '|', 'subscript', '|', 'superscript', '|'
       ],
       fontSize: {
         options: [
@@ -127,7 +128,7 @@ export class CkeditorToolComponent implements OnInit, AfterViewInit, OnChanges {
   initializeEditors() {
     ClassicEditor.create(this.editorRef.nativeElement, {
       // plugins: this.editorConfig.plugins,
-      extraPlugins: ['Font'],
+      extraPlugins: ['Font',MathText],
       toolbar: this.editorConfig.toolbar,
       fontSize: this.editorConfig.fontSize,
       image: this.editorConfig.image,
@@ -201,7 +202,7 @@ export class CkeditorToolComponent implements OnInit, AfterViewInit, OnChanges {
    */
   getMyImages(offset) {
     if (offset === 0) {
-      this.myAssets.length = 0;
+      this.myAssets.length = 0; 
     }
     const req = {
       url: `${this.configService.urlConFig.URLS.COMPOSITE.SEARCH}`,

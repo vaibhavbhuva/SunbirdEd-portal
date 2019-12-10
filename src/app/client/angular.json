@@ -25,7 +25,9 @@
               "node_modules/datatables.net-dt/css/jquery.dataTables.min.css",
               "src/assets/styles/semantic/semantic.min.css",
               "node_modules/font-awesome/css/font-awesome.css",
-              "src/assets/styles/styles.scss"
+              "src/assets/styles/styles.scss",
+              "node_modules/katex/dist/katex.min.css",
+              "node_modules/mathquill/build/mathquill.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
@@ -38,8 +40,11 @@
               "node_modules/slick-carousel/slick/slick.min.js",
               "node_modules/@project-sunbird/telemetry-sdk/index.js",
               "src/assets/libs/semantic.min.js",
-              "node_modules/jquery.fancytree/dist/jquery.fancytree-all-deps.min.js"
-            ]
+              "node_modules/jquery.fancytree/dist/jquery.fancytree-all-deps.min.js",
+              "node_modules/katex/dist/katex.min.js",
+              "node_modules/mathquill/build/mathquill.min.js",
+              "src/assets/libs/mathtext.js"
+            ] 
           },
           "configurations": {
             "production": {

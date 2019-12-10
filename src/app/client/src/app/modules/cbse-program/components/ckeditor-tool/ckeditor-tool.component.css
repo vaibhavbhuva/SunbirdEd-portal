@@ -39,10 +39,10 @@
 
 .insert-image-btn {
   position: absolute;
-  z-index: 1;
-  left: 355px;
-  background-color: transparent;
-  padding: 15px !important;
+    z-index: 1;
+    left: 392px;
+    background-color: transparent;
+    padding: 14px !important;
 }
 
 .insert-image-btn>.icon {
